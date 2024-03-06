@@ -1,6 +1,9 @@
+#function to return Y value at point x
 def func(x):
     return(4/(1+x**2))
-    
+
+
+#Calculates divs and what point the dividers are before using func() to claculate the Y value
 def divisions(n):
     div=1/n
     yvals=[]
@@ -12,6 +15,7 @@ def divisions(n):
 
     return(yvals,div)
 
+#Uses The Trapezoidal rule to calculate area under the graph
 def TrapezoidRule(yvals,div):
     i=0
     a=0
@@ -21,7 +25,8 @@ def TrapezoidRule(yvals,div):
     Area=a*div/2
     print("Trapezoid ",i, " Area: ", Area)
     return (Area)
-    
+
+#Uses The Simpson rule to calculate area under the graph
 def SimpsonRule(yvals,div):
     n=len(yvals)-1
     Sum=0
@@ -37,6 +42,7 @@ def SimpsonRule(yvals,div):
     print("Simpson ",i," Area: ",Area)
     return Area
 
+#calculates Error relative to pi
 def error(Result):
     return abs((1-(Result/3.1415667))*100)
 
@@ -51,7 +57,7 @@ yvals,div=divisions(12)
 Result3=TrapezoidRule(yvals,div)
 #print("Error:",error(Result3),"%")
 
-
+#write results to text file Task2Results.txt
 f=open("Task2Results.txt","w")
 f.write(("Method          N      Value of Pi     Error(%)\n"))
 f.write("Trapezoidal     4  ")
