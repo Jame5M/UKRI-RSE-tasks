@@ -1,6 +1,8 @@
+#calculates answer to the function 
 def func(x):
     return(4/(1+x**2))
-    
+
+#figures out the ammount of divisions and where the results of values at divisions 
 def divisions(n):
     div=1/n
     yvals=[]
@@ -12,6 +14,7 @@ def divisions(n):
 
     return(yvals,div)
 
+#calculates area undergraph using the Trapezoidal rule
 def TrapezoidRule(yvals,div):
     i=0
     a=0
@@ -21,7 +24,8 @@ def TrapezoidRule(yvals,div):
     Area=a*div/2
     print("Trapezoid ",i, " Area: ", Area)
     return (Area)
-    
+
+#calculates area undergraph using the Simpson rule
 def SimpsonRule(yvals,div):
     n=len(yvals)-1
     Sum=0
@@ -37,9 +41,12 @@ def SimpsonRule(yvals,div):
     print("Simpson ",i," Area: ",Area)
     return Area
 
+#calculates error relative to pi
 def error(Result):
     return abs((1-(Result/3.1415667))*100)
 
+
+# calls functions for calculations
 yvals,div=divisions(4)
 Result1=TrapezoidRule(yvals,div)
 #print("Error:",error(Result1),"%")
@@ -51,7 +58,7 @@ yvals,div=divisions(12)
 Result3=TrapezoidRule(yvals,div)
 #print("Error:",error(Result3),"%")
 
-
+#writes result to text file
 f=open("Task2Results.txt","w")
 f.write(("Method          N      Value of Pi     Error(%)\n"))
 f.write("Trapezoidal     4  ")
