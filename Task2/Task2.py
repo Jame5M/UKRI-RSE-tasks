@@ -59,7 +59,7 @@ Result3=TrapezoidRule(yvals,div)
 #print("Error:",error(Result3),"%")
 
 #writes result to text file
-f=open("Task2Results.txt","w")
+f=open("Task2/Task2Results.txt","w")
 f.write(("Method          N      Value of Pi     Error(%)\n"))
 f.write("Trapezoidal     4  ")
 f.write(str(Result1))
