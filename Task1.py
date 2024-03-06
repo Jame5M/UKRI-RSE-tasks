@@ -18,13 +18,14 @@ print("here")
 DataPattern = re.compile(r"[0-9]+\s[+-][0-9][.]?[0-9]*\s[+-][0-9][.]?[0-9]*\s[+-][0-9][.]?[0-9]*\s[-\s][0-9]+")
 RawParticleData = DataPattern.findall(text)
 
-# each particle is a string and needs to be converted into an array of data to be used in calculations
-ParticleData = []
+
 ### redundent code used to visualise the system ###
 # x=[]
 # y=[]
 # z=[]
 # m=[]
+# each particle is a string and needs to be converted into an array of data to be used in calculations
+ParticleData = []
 for Particle in RawParticleData:
     DataStringArray = Particle.split()
     ParticleData.append([int(DataStringArray[0]),
@@ -43,6 +44,7 @@ for Particle in RawParticleData:
 # img=ax.scatter(x,y, z, c=m,cmap='prism', alpha=1)
 # plt.show()
 
+#Calculate the energy and rounded energy of each pairwise interaction and then adds it to the sum
 TrueSystemEnergy=0
 EstimatedSystemEnergy=0
 PairwiseInteractions=0
@@ -55,11 +57,11 @@ while ParticleData !=[]:
         EstimatedSystemEnergy=EstimatedSystemEnergy+EstimatedEnergy
         PairwiseInteractions += 1
         
-
+#calculates the error of the estimated based on the true system energy
 Error=abs(((TrueSystemEnergy-EstimatedSystemEnergy)/TrueSystemEnergy)*100)
 print(Error)
 
-
+#write results to text file Task1Results.txt
 f=open("Task1Results","w")
 f.write("Actual System Energy: ")
 f.write(str(TrueSystemEnergy))
