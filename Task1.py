@@ -13,7 +13,7 @@ def PairwiseEnergy(P1,P2):
 
 # Reads PDF file of the task sent via the email interview invitation and uses a Regular expression
 # search to extract particle data as strings.
-text=extract_text("Task1/TASK 1 Energy of a system of charged particles.pdf")
+text=extract_text("TASK 1 Energy of a system of charged particles.pdf")
 print("here")
 DataPattern = re.compile(r"[0-9]+\s[+-][0-9][.]?[0-9]*\s[+-][0-9][.]?[0-9]*\s[+-][0-9][.]?[0-9]*\s[-\s][0-9]+")
 RawParticleData = DataPattern.findall(text)
