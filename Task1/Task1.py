@@ -17,13 +17,15 @@ text=extract_text("TASK 1 Energy of a system of charged particles.pdf")
 DataPattern = re.compile(r"[0-9]+\s[+-][0-9][.]?[0-9]*\s[+-][0-9][.]?[0-9]*\s[+-][0-9][.]?[0-9]*\s[-\s][0-9]+")
 RawParticleData = DataPattern.findall(text)
 
-# each particle is a string and needs to be converted into an array of data to be used in calculations
-ParticleData = []
+
+
 ### redundent code used to visualise the system ###
 # x=[]
 # y=[]
 # z=[]
 # m=[]
+# each particle is a string and needs to be converted into an array of data to be used in calculations
+ParticleData = []
 for Particle in RawParticleData:
     DataStringArray = Particle.split()
     ParticleData.append([int(DataStringArray[0]),
@@ -42,6 +44,8 @@ for Particle in RawParticleData:
 # img=ax.scatter(x,y, z, c=m,cmap='prism', alpha=1)
 # plt.show()
 
+
+# sets some variables and then calculates energy by calling functions
 TrueSystemEnergy=0
 EstimatedSystemEnergy=0
 PairwiseInteractions=0
@@ -58,22 +62,7 @@ while ParticleData !=[]:
 Error=abs(((TrueSystemEnergy-EstimatedSystemEnergy)/TrueSystemEnergy)*100)
 
 
-
-f=open("Task1Results","w")
-string=("Actual System Energy: ", TrueSystemEnergy)
-f.write(str(string))
-f.write("\n")
-string=("Estimated System Energy: ", EstimatedSystemEnergy)
-f.write(str(string))
-f.write("\n")
-string=("Error: ",Error,"%")
-f.write(str(string))
-f.write("\n")
-string=("Pairwise Interactions: ", PairwiseInteractions)
-f.write(str(string))
-f.write("\n")
-f.close()
-
+#writes results to file
 f=open("Task1Results","w")
 f.write("Actual System Energy: ")
 f.write(str(TrueSystemEnergy))
